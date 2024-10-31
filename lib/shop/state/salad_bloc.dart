@@ -19,7 +19,19 @@ class SaladListState extends SaladState {
   SaladListState(this.salads, this.selectedFilter);
 }
 
-enum SaladFilter { hottest, popular, newCombo, top }
+enum SaladFilter {
+  hottest(name: 'Hottest'),
+  popular(name: 'Popular'),
+  newCombo(name: 'New combo'),
+  top(name: 'Top');
+
+  final String name;
+
+  const SaladFilter({required this.name});
+
+  @override
+  toString() => name;
+}
 
 class SaladBloc extends Bloc<SaladEvent, SaladState> {
   final List<Salad> salads;

@@ -1,4 +1,3 @@
-import 'package:flutter_test_task_2/shop/view/ui_data.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_test_task_2/shop/data/data.dart';
 import 'package:flutter_test_task_2/shop/data/models/salad.dart';
+import 'package:flutter_test_task_2/shop/view/ui_data.dart';
 
 import 'package:flutter_test_task_2/shop/state/salad_bloc.dart';
 
@@ -23,6 +23,7 @@ class FilteredCombo extends StatelessWidget {
       child: Column(
         children: [
           FilterButtons(saladBloc: saladBloc),
+          const SizedBox(height: 8),
           FilteredItems(saladBloc: saladBloc),
         ],
       ),
@@ -53,17 +54,32 @@ class FilterButtons extends StatelessWidget {
           children: SaladFilter.values.map((filter) {
             final isSelected = filter == selectedFilter;
 
-            return TextButton(
-              onPressed: () {
+            return GestureDetector(
+              onTap: () {
                 saladBloc.add(FilterSalads(filter));
               },
-              style: TextButton.styleFrom(
-                backgroundColor: isSelected ? Colors.blue : Colors.grey[200],
-                textStyle: isSelected
-                    ? const TextStyle(color: Colors.white)
-                    : const TextStyle(color: Colors.black),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(filter.toString(),
+                      style: isSelected
+                          ? const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff27214D))
+                          : const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff938DB5))),
+                  isSelected
+                      ? Container(
+                          height: 2,
+                          width: 22,
+                          color: const Color(0xffFFA451),
+                        )
+                      : const SizedBox(height: 2),
+                ],
               ),
-              child: Text(filter.toString().split('.').last),
             );
           }).toList(),
         );
@@ -118,7 +134,7 @@ class SaladTile extends StatelessWidget {
     final backgroundColor = UiData.getRandomColor();
 
     return Container(
-      width: 120,
+      width: 140,
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(16),
@@ -129,7 +145,7 @@ class SaladTile extends StatelessWidget {
           children: [
             const SizedBox(height: 8),
             SizedBox(
-              height: 64,
+              height: 80,
               child: Image.network(
                 Data.getSrcById(salad.id),
                 fit: BoxFit.cover,
@@ -149,7 +165,7 @@ class SaladTile extends StatelessWidget {
                 },
               ),
             ),
-            const SizedBox(height: 8),
+            // const SizedBox(height: 8),
             Align(
               alignment: Alignment.centerLeft,
               child: Padding(
