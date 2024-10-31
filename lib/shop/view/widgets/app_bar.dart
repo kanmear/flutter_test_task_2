@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
+
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
 
@@ -9,15 +11,25 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsets.only(left: 16, right: 32),
       child: AppBar(
         backgroundColor: const Color(0xffF0F0F0),
-        leading: const Icon(Icons.menu),
+        leading: SvgPicture.asset(
+          'assets/svg/menu.svg',
+          width: 24,
+          height: 24,
+          fit: BoxFit.scaleDown,
+        ),
         actions: [
           GestureDetector(
               onTap: () => {},
-              child: const Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.shopping_basket_outlined),
-                  Text(
+                  SvgPicture.asset(
+                    'assets/svg/shopping_basket.svg',
+                    width: 24,
+                    height: 24,
+                    fit: BoxFit.scaleDown,
+                  ),
+                  const Text(
                     'My basket',
                     style: TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
                   )

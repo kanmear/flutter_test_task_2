@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
+
 class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SearchField(),
-        SizedBox(width: 16),
-        Icon(Icons.filter_list_sharp),
+        const SearchField(),
+        const SizedBox(width: 16),
+        SvgPicture.asset(
+          'assets/svg/filter.svg',
+          width: 24,
+          height: 24,
+          fit: BoxFit.scaleDown,
+        )
       ],
     );
   }
