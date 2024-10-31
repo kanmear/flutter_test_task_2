@@ -107,7 +107,8 @@ class FilteredItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Container(
+      constraints: const BoxConstraints(maxHeight: 140),
       child: BlocBuilder<SaladFilterBloc, SaladFilterState>(
         bloc: saladBloc,
         builder: (context, state) {
@@ -171,7 +172,6 @@ class SaladTile extends StatelessWidget {
                 },
               ),
             ),
-            // const SizedBox(height: 8),
             Align(
               alignment: Alignment.centerLeft,
               child: Padding(

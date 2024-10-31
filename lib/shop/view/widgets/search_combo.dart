@@ -67,15 +67,15 @@ class SaladList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SaladSearchBloc, SaladSearchState>(
-      builder: (context, state) {
-        if (state.saladList.isEmpty) {
-          return const Center(child: Text('Couldn\'t find anything'));
-        }
+    return SizedBox(
+      height: 185,
+      child: BlocBuilder<SaladSearchBloc, SaladSearchState>(
+        builder: (context, state) {
+          if (state.saladList.isEmpty) {
+            return const Center(child: Text('Couldn\'t find anything'));
+          }
 
-        return SizedBox(
-          height: 185,
-          child: ListView.separated(
+          return ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: state.saladList.length,
             itemBuilder: (context, index) {
@@ -84,9 +84,9 @@ class SaladList extends StatelessWidget {
             separatorBuilder: (BuildContext context, int index) {
               return const SizedBox(width: 22);
             },
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
