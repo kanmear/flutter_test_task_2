@@ -12,25 +12,37 @@ import 'package:flutter_test_task_2/shop/data/models/salad.dart';
 import 'package:flutter_test_task_2/shop/state/salad_search_bloc.dart';
 
 class SearchCombo extends StatelessWidget {
-  final SaladSearchBloc saladBloc = SaladSearchBloc(Data.saladList);
-
-  SearchCombo({super.key});
+  const SearchCombo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => saladBloc..add(LoadInitialSalads()),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          CustomSearchBar(),
-          SizedBox(height: 38),
-          Header(),
-          SizedBox(height: 24),
-          SaladList()
-        ],
-      ),
-    );
+    return FutureBuilder<List<Salad>>(
+        future: Data.mockFetch(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator(color: Color(0xffF08626));
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else if (snapshot.hasData) {
+            final SaladSearchBloc saladBloc = SaladSearchBloc(snapshot.data!);
+
+            return BlocProvider(
+              create: (_) => saladBloc..add(LoadInitialSalads()),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  CustomSearchBar(),
+                  SizedBox(height: 38),
+                  Header(),
+                  SizedBox(height: 24),
+                  SaladList()
+                ],
+              ),
+            );
+          } else {
+            return const Text('No data available');
+          }
+        });
   }
 }
 

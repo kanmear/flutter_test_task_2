@@ -1,7 +1,7 @@
 import 'package:flutter_test_task_2/shop/data/models/salad.dart';
 
 class Data {
-  static List<Salad> saladList = [
+  static final List<Salad> _saladList = [
     Salad(
       id: 0,
       name: 'Honey lime combo',
@@ -93,6 +93,11 @@ class Data {
       lastOrdered: DateTime.now().subtract(const Duration(days: 6)),
     ),
   ];
+
+  static Future<List<Salad>> mockFetch() async {
+    await Future.delayed(const Duration(seconds: 2));
+    return Data._saladList;
+  }
 
   static final List<String> _imagesUrl = [
     'https://www.figma.com/file/LbAl0gnpNXHXhfTHT0PQ2z/image/ee16823da03b881bf4ce051b2a64b06284deadd7',

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_test_task_2/shop/state/basket_counter_cubit.dart';
 
 import 'package:flutter_test_task_2/shop/view/widgets/app_bar.dart';
@@ -14,21 +15,21 @@ class ShopPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => CounterCubit(),
-      child: Scaffold(
+      child: const Scaffold(
           resizeToAvoidBottomInset: false,
-          backgroundColor: const Color(0xffF0F0F0),
-          appBar: const CustomAppBar(),
-          drawer: const Drawer(),
+          backgroundColor: Color(0xffF0F0F0),
+          appBar: CustomAppBar(),
+          drawer: Drawer(),
           body: Padding(
-            padding: const EdgeInsets.only(left: 32, right: 32),
+            padding: EdgeInsets.only(left: 32, right: 32),
             child: Column(children: [
-              const SizedBox(height: 16),
-              const GreetingText(),
-              const SizedBox(height: 38),
+              SizedBox(height: 16),
+              GreetingText(),
+              SizedBox(height: 38),
               SearchCombo(),
-              const SizedBox(height: 48),
+              SizedBox(height: 48),
               FilteredCombo(),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
             ]),
           )),
     );

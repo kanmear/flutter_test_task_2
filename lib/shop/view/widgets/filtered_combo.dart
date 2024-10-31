@@ -12,20 +12,33 @@ import 'package:flutter_test_task_2/shop/view/ui_data.dart';
 import 'package:flutter_test_task_2/shop/view/widgets/add_combo_button.dart';
 
 class FilteredCombo extends StatelessWidget {
-  final SaladFilterBloc saladBloc = SaladFilterBloc(Data.saladList);
-
-  FilteredCombo({super.key});
+  const FilteredCombo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        children: [
-          FilterButtons(saladBloc: saladBloc),
-          const SizedBox(height: 8),
-          FilteredItems(saladBloc: saladBloc),
-        ],
-      ),
+    return FutureBuilder<List<Salad>>(
+      future: Data.mockFetch(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator(color: Color(0xffF08626));
+        } else if (snapshot.hasError) {
+          return Text('Error: ${snapshot.error}');
+        } else if (snapshot.hasData) {
+          final SaladFilterBloc saladBloc = SaladFilterBloc(snapshot.data!);
+
+          return Expanded(
+            child: Column(
+              children: [
+                FilterButtons(saladBloc: saladBloc),
+                const SizedBox(height: 8),
+                FilteredItems(saladBloc: saladBloc),
+              ],
+            ),
+          );
+        } else {
+          return const Text('No data available');
+        }
+      },
     );
   }
 }

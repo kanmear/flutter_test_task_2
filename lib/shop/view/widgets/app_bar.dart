@@ -58,7 +58,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               children: [
                 Center(
                     child: count == 0
-                        ? const Text('Basket is empty')
+                        ? const Text('Basket is empty.')
                         : Text('${counter.state} combos added.')),
               ],
             ),
