@@ -1,3 +1,4 @@
+import 'package:rxdart/transformers.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_test_task_2/shop/data/models/salad.dart';
@@ -48,24 +49,31 @@ class SaladSearchBloc extends Bloc<SaladEvent, SaladSearchState> {
       ));
     });
 
-    on<SearchSalads>((event, emit) {
-      if (event.query.isEmpty) {
-        emit(SaladSearchState(
-          saladList: allSalads.take(3).toList(),
-          title: 'Recommended Combo',
-        ));
-      } else {
-        final filteredSalads = allSalads
-            .where((salad) =>
-                salad.name.toLowerCase().contains(event.query.toLowerCase()))
-            .toList();
+    on<SearchSalads>(
+      (event, emit) {
+        if (event.query.isEmpty) {
+          emit(SaladSearchState(
+            saladList: allSalads.take(3).toList(),
+            title: 'Recommended Combo',
+          ));
+        } else {
+          final filteredSalads = allSalads
+              .where((salad) =>
+                  salad.name.toLowerCase().contains(event.query.toLowerCase()))
+              .toList();
 
-        emit(SaladSearchState(
-          saladList: filteredSalads,
-          title: 'Search results',
-          searchText: event.query,
-        ));
-      }
-    });
+          emit(SaladSearchState(
+            saladList: filteredSalads,
+            title: 'Search results',
+            searchText: event.query,
+          ));
+        }
+      },
+      transformer: debounce(const Duration(milliseconds: 400)),
+    );
+  }
+
+  EventTransformer<E> debounce<E>(Duration duration) {
+    return (events, mapper) => events.debounceTime(duration).switchMap(mapper);
   }
 }
