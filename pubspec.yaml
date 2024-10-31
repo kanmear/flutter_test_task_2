@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   intl:
+  flutter_bloc:
 
 dev_dependencies:
   flutter_test:
