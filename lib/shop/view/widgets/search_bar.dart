@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:flutter_test_task_2/shop/state/salad_search_bloc.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -35,8 +38,11 @@ class SearchField extends StatelessWidget {
           color: const Color(0xffF3F4F9),
           borderRadius: BorderRadius.circular(16),
         ),
-        child: const TextField(
-          decoration: InputDecoration(
+        child: TextField(
+          onChanged: (query) {
+            context.read<SaladSearchBloc>().add(SearchSalads(query));
+          },
+          decoration: const InputDecoration(
               enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.transparent),
                   borderRadius: BorderRadius.all(Radius.zero)),

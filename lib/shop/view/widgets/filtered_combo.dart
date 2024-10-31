@@ -11,12 +11,9 @@ import 'package:flutter_test_task_2/shop/state/salad_filter_bloc.dart';
 import 'package:flutter_test_task_2/shop/view/ui_data.dart';
 
 class FilteredCombo extends StatelessWidget {
-  final SaladFilterBloc saladBloc;
+  final SaladFilterBloc saladBloc = SaladFilterBloc(Data.saladList);
 
-  const FilteredCombo({
-    super.key,
-    required this.saladBloc,
-  });
+  FilteredCombo({super.key});
 
   @override
   Widget build(BuildContext context) {

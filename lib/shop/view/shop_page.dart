@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_test_task_2/shop/data/data.dart';
-
-import 'package:flutter_test_task_2/shop/state/salad_filter_bloc.dart';
-
 import 'package:flutter_test_task_2/shop/view/widgets/app_bar.dart';
-import 'package:flutter_test_task_2/shop/view/widgets/filtered_combo.dart';
 import 'package:flutter_test_task_2/shop/view/widgets/greeting.dart';
-import 'package:flutter_test_task_2/shop/view/widgets/search_bar.dart';
+import 'package:flutter_test_task_2/shop/view/widgets/filtered_combo.dart';
 import 'package:flutter_test_task_2/shop/view/widgets/recommended_combo.dart';
 
 class ShopPage extends StatelessWidget {
@@ -26,11 +21,9 @@ class ShopPage extends StatelessWidget {
             const SizedBox(height: 16),
             const GreetingText(),
             const SizedBox(height: 38),
-            const CustomSearchBar(),
-            const SizedBox(height: 38),
-            const RecommendedCombo(),
+            SearchCombo(),
             const SizedBox(height: 48),
-            FilteredCombo(saladBloc: SaladFilterBloc(Data.saladList)),
+            FilteredCombo(),
             const SizedBox(height: 16),
           ]),
         ));
