@@ -23,7 +23,7 @@ class Data {
     Salad(
       id: 2,
       name: 'Quinoa fruit salad',
-      price: 8.0,
+      price: 3000,
       rating: 4.6,
       ordersCount: 120,
       releaseDate: DateTime.now().subtract(const Duration(days: 60)),
@@ -32,7 +32,7 @@ class Data {
     Salad(
       id: 3,
       name: 'Tropical fruit salad',
-      price: 7.5,
+      price: 7000,
       rating: 4.4,
       ordersCount: 90,
       releaseDate: DateTime.now().subtract(const Duration(days: 10)),
@@ -41,7 +41,7 @@ class Data {
     Salad(
       id: 4,
       name: 'Melon fruit salad',
-      price: 12.0,
+      price: 12000,
       rating: 4.9,
       ordersCount: 180,
       releaseDate: DateTime.now().subtract(const Duration(days: 90)),
@@ -50,7 +50,7 @@ class Data {
     Salad(
       id: 5,
       name: 'Banana Salad',
-      price: 9.5,
+      price: 9000,
       rating: 4.5,
       ordersCount: 100,
       releaseDate: DateTime.now().subtract(const Duration(days: 20)),
@@ -59,7 +59,7 @@ class Data {
     Salad(
       id: 6,
       name: 'Apple Salad',
-      price: 11.0,
+      price: 11000,
       rating: 4.7,
       ordersCount: 85,
       releaseDate: DateTime.now().subtract(const Duration(days: 25)),
@@ -68,7 +68,7 @@ class Data {
     Salad(
       id: 7,
       name: 'Tomato Salad',
-      price: 10.0,
+      price: 6000,
       rating: 4.3,
       ordersCount: 60,
       releaseDate: DateTime.now().subtract(const Duration(days: 120)),
@@ -77,7 +77,7 @@ class Data {
     Salad(
       id: 8,
       name: 'Kiwi Salad',
-      price: 12.5,
+      price: 5000,
       rating: 4.2,
       ordersCount: 110,
       releaseDate: DateTime.now().subtract(const Duration(days: 15)),
@@ -86,7 +86,7 @@ class Data {
     Salad(
       id: 9,
       name: 'Multi Salad',
-      price: 8.5,
+      price: 6800,
       rating: 4.0,
       ordersCount: 70,
       releaseDate: DateTime.now().subtract(const Duration(days: 40)),
