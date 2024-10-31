@@ -59,8 +59,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 Center(
                     child: count == 0
                         ? const Text('Basket is empty')
-                        : Text(
-                            'The increment button was pressed ${counter.state} times.')),
+                        : Text('${counter.state} combos added.')),
               ],
             ),
             actions: [
