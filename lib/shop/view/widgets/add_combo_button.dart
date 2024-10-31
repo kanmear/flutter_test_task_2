@@ -50,7 +50,7 @@ class AddComboButton extends StatelessWidget {
             content: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [Center(child: Text("Added $comboName in the basket"))],
+              children: [Center(child: Text("Added $comboName to the basket"))],
             ),
             actions: [
               TextButton(
