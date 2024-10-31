@@ -45,10 +45,7 @@ class FilterButtons extends StatelessWidget {
     return BlocBuilder<SaladFilterBloc, SaladFilterState>(
       bloc: saladBloc,
       builder: (context, state) {
-        SaladFilter? selectedFilter;
-        if (state is SaladListState) {
-          selectedFilter = state.selectedFilter;
-        }
+        SaladFilter selectedFilter = state.selectedFilter;
 
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -103,20 +100,17 @@ class FilteredItems extends StatelessWidget {
       child: BlocBuilder<SaladFilterBloc, SaladFilterState>(
         bloc: saladBloc,
         builder: (context, state) {
-          if (state is SaladListState) {
-            return ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: state.salads.length,
-              itemBuilder: (context, index) {
-                final salad = state.salads[index];
-                return SaladTile(salad: salad);
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(width: 16);
-              },
-            );
-          }
-          return const CircularProgressIndicator();
+          return ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemCount: state.salads.length,
+            itemBuilder: (context, index) {
+              final salad = state.salads[index];
+              return SaladTile(salad: salad);
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return const SizedBox(width: 16);
+            },
+          );
         },
       ),
     );

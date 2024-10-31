@@ -1,32 +1,29 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_test_task_2/shop/data/models/salad.dart';
+import 'package:flutter_test_task_2/shop/state/salad_abstract.dart';
 
-abstract class SaladFilterEvent {}
+class SaladFilterState extends SaladState {
+  final List<Salad> salads;
+  final SaladFilter selectedFilter;
 
-class FilterSalads extends SaladFilterEvent {
+  SaladFilterState(this.salads, this.selectedFilter);
+}
+
+class FilterSalads extends SaladEvent {
   final SaladFilter filter;
 
   FilterSalads(this.filter);
 }
 
-abstract class SaladFilterState {}
-
-class SaladListState extends SaladFilterState {
-  final List<Salad> salads;
-  final SaladFilter selectedFilter;
-
-  SaladListState(this.salads, this.selectedFilter);
-}
-
-class SaladFilterBloc extends Bloc<SaladFilterEvent, SaladFilterState> {
+class SaladFilterBloc extends Bloc<FilterSalads, SaladFilterState> {
   final List<Salad> salads;
 
   SaladFilterBloc(this.salads)
-      : super(SaladListState(salads, SaladFilter.hottest)) {
+      : super(SaladFilterState(salads, SaladFilter.hottest)) {
     on<FilterSalads>((event, emit) {
       final filteredSalads = _getFilteredSalads(event.filter);
-      emit(SaladListState(filteredSalads, event.filter));
+      emit(SaladFilterState(filteredSalads, event.filter));
     });
 
     add(FilterSalads(SaladFilter.hottest));
