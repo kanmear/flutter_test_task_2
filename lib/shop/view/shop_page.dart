@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test_task_2/shop/view/widgets/app_bar.dart';
 import 'package:flutter_test_task_2/shop/view/widgets/greeting.dart';
 import 'package:flutter_test_task_2/shop/view/widgets/search_bar.dart';
+import 'package:flutter_test_task_2/shop/view/widgets/recommended_combo.dart';
 
 class ShopPage extends StatelessWidget {
   const ShopPage({super.key});
@@ -10,6 +11,7 @@ class ShopPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+        backgroundColor: Color(0xffF0F0F0),
         appBar: CustomAppBar(),
         drawer: Drawer(),
         body: Padding(
@@ -18,7 +20,9 @@ class ShopPage extends StatelessWidget {
             SizedBox(height: 16),
             GreetingText(),
             SizedBox(height: 38),
-            CustomSearchBar()
+            CustomSearchBar(),
+            SizedBox(height: 38),
+            RecommendedCombo()
           ]),
         ));
   }
