@@ -1,3 +1,3 @@
-# flutter_test_task_2
+# Test Flutter app
 
-A new Flutter project.
+Flutter app made as a part of take-home task. 
