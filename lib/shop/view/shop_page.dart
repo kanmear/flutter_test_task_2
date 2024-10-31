@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test_task_2/shop/view/widgets/app_bar.dart';
 import 'package:flutter_test_task_2/shop/view/widgets/greeting.dart';
+import 'package:flutter_test_task_2/shop/view/widgets/search_bar.dart';
 
 class ShopPage extends StatelessWidget {
   const ShopPage({super.key});
@@ -16,6 +17,8 @@ class ShopPage extends StatelessWidget {
           child: Column(children: [
             SizedBox(height: 16),
             GreetingText(),
+            SizedBox(height: 38),
+            CustomSearchBar()
           ]),
         ));
   }
