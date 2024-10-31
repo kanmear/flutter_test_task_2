@@ -35,8 +35,6 @@ class SearchSalads extends SaladEvent {
   SearchSalads(this.query);
 }
 
-class ClearSearch extends SaladEvent {}
-
 class SaladSearchBloc extends Bloc<SaladEvent, SaladSearchState> {
   final List<Salad> allSalads;
 
