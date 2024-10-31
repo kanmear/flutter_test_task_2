@@ -16,11 +16,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsets.only(left: 16, right: 32),
       child: AppBar(
         backgroundColor: const Color(0xffF0F0F0),
-        leading: SvgPicture.asset(
-          'assets/svg/menu.svg',
-          width: 24,
-          height: 24,
-          fit: BoxFit.scaleDown,
+        leading: GestureDetector(
+          onTap: () => Scaffold.of(context).openDrawer(),
+          child: SvgPicture.asset(
+            'assets/svg/menu.svg',
+            width: 24,
+            height: 24,
+            fit: BoxFit.scaleDown,
+          ),
         ),
         actions: [
           GestureDetector(
