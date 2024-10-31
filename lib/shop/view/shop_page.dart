@@ -29,7 +29,8 @@ class ShopPage extends StatelessWidget {
             const SizedBox(height: 38),
             const RecommendedCombo(),
             const SizedBox(height: 48),
-            FilteredCombo(saladBloc: SaladBloc(Data.saladList))
+            FilteredCombo(saladBloc: SaladBloc(Data.saladList)),
+            const SizedBox(height: 16),
           ]),
         ));
   }
