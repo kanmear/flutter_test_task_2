@@ -9,6 +9,7 @@ import 'package:flutter_test_task_2/shop/data/models/salad.dart';
 import 'package:flutter_test_task_2/shop/state/salad_filter_bloc.dart';
 
 import 'package:flutter_test_task_2/shop/view/ui_data.dart';
+import 'package:flutter_test_task_2/shop/view/widgets/add_combo_button.dart';
 
 class FilteredCombo extends StatelessWidget {
   final SaladFilterBloc saladBloc = SaladFilterBloc(Data.saladList);
@@ -183,7 +184,7 @@ class SaladTile extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                         color: Color(0xffF08626)),
                   ),
-                  const AddIconButton()
+                  const AddComboButton()
                 ],
               ),
             ),
@@ -200,35 +201,6 @@ class SaladTile extends StatelessWidget {
           ),
         )
       ]),
-    );
-  }
-}
-
-class AddIconButton extends StatelessWidget {
-  const AddIconButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => {},
-      child: const SizedBox(
-        height: 24,
-        width: 24,
-        child: Stack(children: [
-          Icon(
-            Icons.circle,
-            color: Color(0xffFFE3C9),
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: Icon(
-              Icons.add,
-              color: Color(0xffEC7B15),
-              size: 16,
-            ),
-          ),
-        ]),
-      ),
     );
   }
 }
