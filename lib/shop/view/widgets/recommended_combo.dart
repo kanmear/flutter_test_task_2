@@ -65,10 +65,9 @@ class SaladTile extends StatelessWidget {
                 const SizedBox(height: 22),
                 SizedBox(
                   height: 80,
-                  width: 80,
                   child: Image.network(
                     Data.getSrcById(salad.id),
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                     loadingBuilder: (BuildContext context, Widget child,
                         ImageChunkEvent? loadingProgress) {
                       if (loadingProgress == null) return child;
@@ -86,12 +85,18 @@ class SaladTile extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 12),
-                Text(
-                  salad.name,
-                  style: const TextStyle(
-                      fontSize: 14, fontWeight: FontWeight.w500),
-                  softWrap: false,
-                  overflow: TextOverflow.ellipsis,
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 16, right: 16),
+                    child: Text(
+                      salad.name,
+                      style: const TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w500),
+                      softWrap: false,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 12),
                 Padding(
