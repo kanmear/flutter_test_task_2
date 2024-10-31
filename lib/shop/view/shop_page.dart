@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test_task_2/shop/data/data.dart';
 
-import 'package:flutter_test_task_2/shop/state/salad_bloc.dart';
+import 'package:flutter_test_task_2/shop/state/salad_filter_bloc.dart';
 
 import 'package:flutter_test_task_2/shop/view/widgets/app_bar.dart';
 import 'package:flutter_test_task_2/shop/view/widgets/filtered_combo.dart';
@@ -16,6 +16,7 @@ class ShopPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: const Color(0xffF0F0F0),
         appBar: const CustomAppBar(),
         drawer: const Drawer(),
@@ -29,7 +30,7 @@ class ShopPage extends StatelessWidget {
             const SizedBox(height: 38),
             const RecommendedCombo(),
             const SizedBox(height: 48),
-            FilteredCombo(saladBloc: SaladBloc(Data.saladList)),
+            FilteredCombo(saladBloc: SaladFilterBloc(Data.saladList)),
             const SizedBox(height: 16),
           ]),
         ));

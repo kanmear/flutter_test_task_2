@@ -2,41 +2,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_test_task_2/shop/data/models/salad.dart';
 
-abstract class SaladEvent {}
+abstract class SaladFilterEvent {}
 
-class FilterSalads extends SaladEvent {
+class FilterSalads extends SaladFilterEvent {
   final SaladFilter filter;
 
   FilterSalads(this.filter);
 }
 
-abstract class SaladState {}
+abstract class SaladFilterState {}
 
-class SaladListState extends SaladState {
+class SaladListState extends SaladFilterState {
   final List<Salad> salads;
   final SaladFilter selectedFilter;
 
   SaladListState(this.salads, this.selectedFilter);
 }
 
-enum SaladFilter {
-  hottest(name: 'Hottest'),
-  popular(name: 'Popular'),
-  newCombo(name: 'New combo'),
-  top(name: 'Top');
-
-  final String name;
-
-  const SaladFilter({required this.name});
-
-  @override
-  toString() => name;
-}
-
-class SaladBloc extends Bloc<SaladEvent, SaladState> {
+class SaladFilterBloc extends Bloc<SaladFilterEvent, SaladFilterState> {
   final List<Salad> salads;
 
-  SaladBloc(this.salads) : super(SaladListState(salads, SaladFilter.hottest)) {
+  SaladFilterBloc(this.salads)
+      : super(SaladListState(salads, SaladFilter.hottest)) {
     on<FilterSalads>((event, emit) {
       final filteredSalads = _getFilteredSalads(event.filter);
       emit(SaladListState(filteredSalads, event.filter));
@@ -68,4 +55,18 @@ class SaladBloc extends Bloc<SaladEvent, SaladState> {
         return result.take(3).toList();
     }
   }
+}
+
+enum SaladFilter {
+  hottest(name: 'Hottest'),
+  popular(name: 'Popular'),
+  newCombo(name: 'New combo'),
+  top(name: 'Top');
+
+  final String name;
+
+  const SaladFilter({required this.name});
+
+  @override
+  toString() => name;
 }

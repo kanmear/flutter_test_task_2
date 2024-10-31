@@ -5,12 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_test_task_2/shop/data/data.dart';
 import 'package:flutter_test_task_2/shop/data/models/salad.dart';
+
+import 'package:flutter_test_task_2/shop/state/salad_filter_bloc.dart';
+
 import 'package:flutter_test_task_2/shop/view/ui_data.dart';
 
-import 'package:flutter_test_task_2/shop/state/salad_bloc.dart';
-
 class FilteredCombo extends StatelessWidget {
-  final SaladBloc saladBloc;
+  final SaladFilterBloc saladBloc;
 
   const FilteredCombo({
     super.key,
@@ -32,7 +33,7 @@ class FilteredCombo extends StatelessWidget {
 }
 
 class FilterButtons extends StatelessWidget {
-  final SaladBloc saladBloc;
+  final SaladFilterBloc saladBloc;
 
   const FilterButtons({
     super.key,
@@ -41,7 +42,7 @@ class FilterButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SaladBloc, SaladState>(
+    return BlocBuilder<SaladFilterBloc, SaladFilterState>(
       bloc: saladBloc,
       builder: (context, state) {
         SaladFilter? selectedFilter;
@@ -89,7 +90,7 @@ class FilterButtons extends StatelessWidget {
 }
 
 class FilteredItems extends StatelessWidget {
-  final SaladBloc saladBloc;
+  final SaladFilterBloc saladBloc;
 
   const FilteredItems({
     super.key,
@@ -99,7 +100,7 @@ class FilteredItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: BlocBuilder<SaladBloc, SaladState>(
+      child: BlocBuilder<SaladFilterBloc, SaladFilterState>(
         bloc: saladBloc,
         builder: (context, state) {
           if (state is SaladListState) {
