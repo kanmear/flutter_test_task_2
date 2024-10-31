@@ -4,14 +4,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test_task_2/shop/state/basket_counter_cubit.dart';
 
 class AddComboButton extends StatelessWidget {
-  const AddComboButton({super.key});
+  final String comboName;
+
+  const AddComboButton({
+    super.key,
+    required this.comboName,
+  });
 
   @override
   Widget build(BuildContext context) {
     final counterCubit = context.read<CounterCubit>();
 
     return GestureDetector(
-      onTap: () => counterCubit.increment(),
+      onTap: () {
+        counterCubit.increment();
+        _showInfoPopup(context, comboName);
+      },
       child: const SizedBox(
         height: 24,
         width: 24,
@@ -31,5 +39,26 @@ class AddComboButton extends StatelessWidget {
         ]),
       ),
     );
+  }
+
+  void _showInfoPopup(BuildContext context, String comboName) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Info'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [Center(child: Text("Added $comboName in the basket"))],
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Close'),
+              ),
+            ],
+          );
+        });
   }
 }

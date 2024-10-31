@@ -184,7 +184,7 @@ class SaladTile extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                         color: Color(0xffF08626)),
                   ),
-                  const AddComboButton()
+                  AddComboButton(comboName: salad.name)
                 ],
               ),
             ),
