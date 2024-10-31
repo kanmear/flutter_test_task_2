@@ -6,7 +6,7 @@ import 'package:flutter_test_task_2/shop/state/basket_counter_cubit.dart';
 import 'package:flutter_test_task_2/shop/view/widgets/app_bar.dart';
 import 'package:flutter_test_task_2/shop/view/widgets/greeting.dart';
 import 'package:flutter_test_task_2/shop/view/widgets/filtered_combo.dart';
-import 'package:flutter_test_task_2/shop/view/widgets/recommended_combo.dart';
+import 'package:flutter_test_task_2/shop/view/widgets/search_combo.dart';
 
 class ShopPage extends StatelessWidget {
   const ShopPage({super.key});
