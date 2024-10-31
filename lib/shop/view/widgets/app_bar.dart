@@ -8,6 +8,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 32),
       child: AppBar(
+        backgroundColor: const Color(0xffF0F0F0),
         leading: const Icon(Icons.menu),
         actions: [
           GestureDetector(
